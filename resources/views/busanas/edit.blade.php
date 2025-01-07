@@ -41,7 +41,8 @@
                         <input type="file" name="gambar" id="gambar" class="form-control" accept="image/*"
                             onchange="previewImage(event)">
                         <div class="mb-2 mt-2">
-                            <img id="preview" src="{{ asset('storage/' . $busana->gambar) }}" alt="Gambar Lama"
+                            <img id="preview" src="{{ asset('storage/' . $busana->gambar) }}"
+                                alt="{{ $busana->nama_busana }}"
                                 style="max-width: 200px; max-height: 200px; object-fit: cover;">
                         </div>
                     </div>

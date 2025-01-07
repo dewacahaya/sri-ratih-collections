@@ -1,7 +1,7 @@
 @extends('layouts.custmaster')
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-5" style="padding-bottom: 94px">
         <h2 class="text-center mb-5">Pesanan Saya</h2>
         @if ($orders->isEmpty())
             <p class="text-center">Anda belum memiliki pesanan.</p>

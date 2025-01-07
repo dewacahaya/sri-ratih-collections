@@ -111,7 +111,7 @@ class CustomerController extends Controller
 
     public function showDetail($id)
     {
-        $recommendations = Busana::take(3)->get();
+        $recommendations = Busana::take(3)->where('stok', '>', 0)->get();
 
         $busana = Busana::findOrFail($id);
         return view('customers.homes.busanaDetail', compact('busana', 'recommendations'));
@@ -275,6 +275,20 @@ class CustomerController extends Controller
                 'payment_method' => 'required|in:COD,Bank'
             ]);
 
+            // Ambil data customer yang sedang login
+            $customer = auth('customers')->user();
+
+            // Siapkan data untuk update profil customer
+            $updateData = [
+                'name' => $request->name,
+                'no_telp' => $request->phone,
+                'alamat' => $request->address,
+            ];
+
+            // Update data customer
+            DB::table('customers')->where('id', $customer->id)->update($updateData);
+
+
             // Ambil data keranjang
             $cart = session()->get('cart', []);
 
@@ -348,7 +362,6 @@ class CustomerController extends Controller
                 ->withInput();
         }
     }
-
     // END CHECKOUT LOGIC
 
 
