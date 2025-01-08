@@ -20,7 +20,7 @@ class CustomerController extends Controller
     // LANDING PAGE
     public function showHomePage()
     {
-        $busanas = Busana::all();
+        $busanas = Busana::take(3)->get();
         return view('home', compact('busanas'));
     }
     // END LANDING PAGE
@@ -32,7 +32,7 @@ class CustomerController extends Controller
 
         $special1 = Busana::find(1);
         $special2 = Busana::find(2);
-        $specialMain = Busana::find(3);
+        $specialMain = Busana::find(5);
         return view('customers.homes.rekomen', compact('recommendations', 'special1', 'special2', 'specialMain'));
     }
     // END RECOMMENDATION PAGE

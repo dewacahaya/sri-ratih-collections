@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 @foreach ($busanas as $b)
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-3">
                         <div class="card">
                             <img src="{{ Storage::url($b->gambar) }}"
                                 class="img-fluid card-img-top rounded border-3 border-bottom shadow-sm"
