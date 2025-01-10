@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li
-                        class="py-3 {{ Request::is('admin/busanas', 'admin/busana/create', 'admin/busana/store', 'admin/busanas/edit/{busana_id}', 'admin/busanas/update/{busana_id}') ? 'bg-primary' : '' }}">
+                        class="py-3 {{ Request::is('admin/busanas', 'admin/busanas/*', 'admin/busana/*') ? 'bg-primary' : '' }}">
                         <a href="{{ route('busana.index') }}"
                             class="text-decoration-none text-white d-flex align-items-center ps-3">
                             <i class="bi bi-bag-plus me-3 fs-5"></i> Busanas
