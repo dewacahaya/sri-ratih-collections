@@ -27,7 +27,7 @@
                     <p class="card-text fs-3">Terimakasih! 🎉</p>
 
                     <!-- Pesanan Anda Telah Diterima -->
-                    <h2 class="card-title fw-bold mb-4">Pesanan Anda Telah Diterima</h2>
+                    <h2 class="card-title fw-bold mb-4">Pesanan Anda Telah Dibuat</h2>
 
                     <div class="order-items mb-2">
                         <h4 class="text-center">Detail Pesanan:</h4>
@@ -59,10 +59,56 @@
                     </p>
 
                     <!-- Pilihan Pembayaran -->
-                    <p class="mb-4"><strong>Pilihan Pembayaran:</strong> {{ $order->pembayaran }}</p>
+                    <p><strong>Pilihan Pembayaran:</strong> {{ $order->pembayaran }}</p>
+
+                    @if ($order->pembayaran === 'Bank')
+                        {{-- TOMBOL TRANSFER --}}
+                        <a href="#" class="text-white me-3" data-bs-toggle="modal" data-bs-target="#modal-tf">
+                            <button class="btn btn-primary rounded-pill px-4 py-2">Transfer Di Sini!</button>
+                        </a>
+
+                        <div id="modal-tf" class="modal fade" tabindex="-1" aria-labelledby="tfModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-md text-dark">
+                                <div class="modal-content">
+                                    {{-- HEADER --}}
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="tfModalLabel">Transfer Pembayaran</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    {{-- BODY --}}
+                                    <div class="modal-body">
+                                        <p class="text-center">Silahkan transfer ke rekening berikut agar pesanan dapat
+                                            diproses:</p>
+                                        <div class="d-flex justify-content-center">
+                                            <div class="card text-center" style="width: 18rem;">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <strong>Bank Mandiri</strong>
+                                                        <p class="card-text">No Rekening: 1234567890</p>
+                                                        <p class="card-text">Atas Nama: Sri Ratih</p>
+                                                        <p class="card-text text-muted fs-6">*Setelah melakukan transfer,
+                                                            konfirmasi
+                                                            bukti pembayaran dengan admin via Whatsapp</p>
+                                                    </h5>
+                                                    <button type="button" class="btn btn-primary w-100 mt-2"><a
+                                                            class="text-decoration-none text-white"
+                                                            href="https://wa.me/+628123456789"
+                                                            target="_blank">Admin</a></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
 
                     <!-- Tombol -->
                     <a href="{{ route('customer.orders') }}" class="btn btn-dark rounded-pill px-4 py-2">Lihat Pesanan</a>
+
+
                 </div>
             </div>
         </div>

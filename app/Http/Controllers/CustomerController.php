@@ -252,8 +252,9 @@ class CustomerController extends Controller
         }, 0);
 
         $customer = auth('customers')->user();
+        $paymentMethod = session()->get('payment_method', '');
 
-        return view('customers.transaction.checkout', compact('cart', 'grandTotal', 'shippingOption', 'shippingFee', 'customer'));
+        return view('customers.transaction.checkout', compact('cart', 'grandTotal', 'shippingOption', 'shippingFee', 'customer', 'paymentMethod'));
     }
 
     public function processCheckout(Request $request)
@@ -288,6 +289,7 @@ class CustomerController extends Controller
             // Update data customer
             DB::table('customers')->where('id', $customer->id)->update($updateData);
 
+            session()->put('payment_method', $request->payment_method);
 
             // Ambil data keranjang
             $cart = session()->get('cart', []);

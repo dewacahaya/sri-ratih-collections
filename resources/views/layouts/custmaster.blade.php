@@ -203,6 +203,7 @@
     <div class="container text-center text-md-start">
         <!-- Nama dan Alamat -->
         <h5 class="fw-bold">Sri Ratih Collection</h5>
+        <span>Admin : 081234567890</span>
         <p class="mb-4">
             Jl. Yudistira No.10, Sukawati, Kec. Sukawati, Kabupaten Gianyar, Bali 80582
         </p>
